@@ -1,0 +1,24 @@
+specVersion: 0.0.2
+schema:
+  file: schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: ERC20Forwader
+    network: kovan
+    source:
+      address: "0xCB3F801C91DEcaaE9b08b1eDb915F9677D8fdB4A"
+      abi: ERC20Forwader
+      startBlock: 23753850
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - FeeCharged
+      abis:
+        - name: ERC20Forwader
+          file: ERC20Forwader/abis/ERC20Forwader.json
+      eventHandlers:
+        - event: FeeCharged(indexed address,indexed uint256,indexed address)
+          handler: handleFeeCharged
+      file: ERC20Forwader/ERC20Forwader.wasm

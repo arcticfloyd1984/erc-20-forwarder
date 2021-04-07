@@ -1,0 +1,6 @@
+type Fee @entity {
+  id: ID! "id will be the transaction hash"
+  userAddress: Bytes!
+  feeCharged: BigInt!
+  tokenAddress: Bytes!
+}
